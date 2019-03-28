@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {{ form.csrf_token }}
+    {{ form.author.label }}
+    <p>{{ form.author }}</p>
+    {% for err in form.author.errors %}
+        <p>{{ err }}</p>
+    {% endfor %}
+
+    {{ form.book.label }}
+    <p>{{ form.book }}</p>
+    {% for err in form.book.errors %}
+        <p>{{ err }}</p>
+    {% endfor %}
+
+    {{ form.submit }}
+
+</form>
+
+<ul>
+    {% for author in author_li %}
+        <li>作者：{{ author.name }}</li>
+        <ul>
+            {% for book in author.books %}
+                <li>书籍：{{ book.name }}</li>
+                <a href="javascript:;" bookid="{{ book.id }}">删除</a>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
+<script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $('a').click(function () {
+        var bookid = $(this).attr('bookid');
+        var params = {'book_id': bookid};
+        params = JSON.stringify(params);
+        {#$.post('/del', params, function (data) {#}
+        {#    if (data.res == 0) {#}
+        {#        location.href = '/'#}
+        {#    } else {#}
+        {#        alert(data.err)#}
+        {#    }#}
+        {# })#}
+        $.ajax({
+            url: '/del',
+            type: 'post',
+            data: params,
+            contentType: 'application/json',
+            dataType: 'json'
+        }).success(function (data) {
+            if (data.res == 0) {
+                location.href = '/'
+            }
+        })
+
+
+    })
+</script>
+</body>
+</html>

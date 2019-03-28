@@ -18,6 +18,17 @@ def index():
 
     return render_template('index.html', **data)
 
+# 自定义过滤器
+def list_step_2(list):
+    return list[::2]
+
+# 注册过滤器
+app.add_template_filter(list_step_2,'li2')
+
+
+@app.template_filter('li3')
+def list_step_3(list):
+    return list[::3]
 
 if __name__ == '__main__':
     app.run(debug=True)

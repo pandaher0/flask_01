@@ -10,7 +10,16 @@
 <h1>{{ mydict['city'] }}</h1>
 <h1>{{ mydict.city }}</h1>
 <h1>{{ mylist }}</h1>
+
 <h1>{{ mylist[myint] }}</h1>
 <h1>{{ mylist[0]+mylist[1] }}</h1>
+<h1>A{{ "       flask world       "|trim|capitalize }}A</h1>
+
+
+{#自定义过滤器#}
+<h1>{{ mylist|li2 }}</h1>
+<h1>{{ mylist|li3 }}</h1>
+
+
 </body>
 </html>
