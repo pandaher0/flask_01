@@ -1,0 +1,2 @@
+gunicorn -w 4 -b 0.0.0.0:5000 --access-logfile ./logs/log 17_main:app
+ -D 守护进程

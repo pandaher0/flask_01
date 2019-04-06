@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@39.106.44.166:3306/booktest'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@39.106.44.166:3306/booktest02'
     # 自动跟踪数据库
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # 显示原始sql语句
